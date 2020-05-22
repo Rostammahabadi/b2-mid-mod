@@ -1,0 +1,6 @@
+<% @studios.each do | studio | %>
+  <p>Studio: <%= studio.name %></p>
+  <% studio.movies.each do |movie| %>
+    <p>Movie: <%= movie.title %></p>
+  <% end %>
+<% end %>
