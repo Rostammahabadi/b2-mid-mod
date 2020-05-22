@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+studio1 = Studio.create(name: "Awesome", location: "Evergreen")
+movie_1 = studio1.movies.create(title: "Afflec", creation_year: 2007, genre: "Action")
+movie_1.actors.create(name: "Ben Afflec", age: 32)
