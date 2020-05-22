@@ -7,7 +7,7 @@ RSpec.describe "In the movie show page" do
     actor1 = movie_1.actors.create(name: "Ben Afflec", age: 32)
     actor2 = movie_1.actors.create(name: "Abby", age: 28)
 
-    visit "/studios/#{studio1.id}/movies/#{movie_1.id}"
+    visit "/movies/#{movie_1.id}"
     first = "Abby"
     second = "Ben Afflec"
     expect(first). to appear_before(second)
@@ -23,12 +23,15 @@ RSpec.describe "In the movie show page" do
   it "shows a form for an actors name to add to the movie" do
     studio1 = Studio.create(name: "Awesome", location: "Evergreen")
     movie_1 = studio1.movies.create(title: "Afflec", creation_year: 2007, genre: "Action")
+    movie_2 = studio1.movies.create(title: "title", creation_year: 2000, genre: "blah")
     actor1 = movie_1.actors.create(name: "Ben Afflec", age: 32)
-    actor2 = Actor.create(name: "Abby", age: 28)
+    actor2 = movie_2.actors.create(name: "Abby", age: 28)
 
-    visit("/studios/#{studio1.id}/movies/#{movie_1.id}")
+    visit("/movies/#{movie_1.id}")
     has_field?("name")
     fill_in :name, with: "Abby"
-    expect(current_path).to eq("/studios/#{studio1.id}/movies/#{movie_1.id}")
+    click_on("Add Actor")
+    expect(current_path).to eq("/movies/#{movie_1.id}")
     expect(page).to have_content("#{actor2.name}")
+  end
 end
