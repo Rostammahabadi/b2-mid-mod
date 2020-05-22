@@ -8,6 +8,7 @@ RSpec.describe "In the studio index page" do
     movie_1.actors.create(name: "Ben Afflec", age: 32)
 
     visit "/studios"
+    expect(page).to have_content("#{studio1.name}")
     expect(page).to have_content("#{movie_1.title}")
     expect(page).to have_content("#{movie_2.title}")
   end

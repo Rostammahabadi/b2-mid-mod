@@ -8,4 +8,5 @@
 
 studio1 = Studio.create(name: "Awesome", location: "Evergreen")
 movie_1 = studio1.movies.create(title: "Afflec", creation_year: 2007, genre: "Action")
-movie_1.actors.create(name: "Ben Afflec", age: 32)
+actor1 = movie_1.actors.create(name: "Abby", age:28)
+actor2 = movie_1.actors.create(name: "ross", age:27)

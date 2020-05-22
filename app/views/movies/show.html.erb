@@ -1,0 +1,18 @@
+<h1><%= @movie.title %></h1>
+
+<p><%= @movie.creation_year %></p>
+<p><%= @movie.genre %></p>
+
+<% @actors.each do |actor| %>
+    <p>Actor: <%= actor.name %></p>
+    <p>Age: <%= actor.age %></p>
+<% end %>
+
+<p>Average Age For Actors: <%= @movie.average_actor_age %></p>
+
+<%= form_tag "/movie/#{@movie.id}", method: :post do %>
+  <div class= "movie-form">
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
+  </div>
+<% end %>
